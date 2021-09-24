@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Cart from '../Cart/Cart';
 import Product from '../product/Product';
-import { addToDb } from '../../utilities/fakedb';
+import { addToDb, getStoredCart } from '../../utilities/fakedb';
 import './Products.css';
 
 const Products = () => {
@@ -14,12 +14,26 @@ const Products = () => {
             .then(data => setProduct(data));
     }, [])
 
+    useEffect(() => {
+        if (products.length) {
+            const savedCart = getStoredCart();
+            const newCart = []
+            for (const key in savedCart) {
+                const addedProduct = products.find(product => product.key === key);
+                if (addedProduct) {
+                    addedProduct.quantity = savedCart[key];
+                    newCart.push(addedProduct)
+                }
+            }
+            setCart(newCart);
+        }
+    }, [products])
+
     const handleClick = (product) => {
         const newCart = [...cart, product]
         setCart(newCart)
         addToDb(product.key)
     }
-
 
     return (
         <div className="container d-flex position-relative">
