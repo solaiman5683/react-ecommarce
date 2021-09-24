@@ -13,11 +13,11 @@ const Cart = (props) => {
     return (
         <div className="cart-container bg-dark text-light bg-gradient">
             <h3>Total Items: {props.cart.length}</h3>
-            <p>Price: ${price}</p>
+            <p>Price: ${price.toFixed(2)}</p>
             <p>Shipping & Handling:	${shippingCharge}</p>
             <p>Total before tax: ${totatBeforeTax}</p>
             <p>Estimated Tax: ${tax}</p>
-            <h3 className="text-warning">Total Price: ${totatBeforeTax+tax}</h3>
+            <h3 className="text-warning">Total Price: ${(totatBeforeTax+tax).toFixed(2)}</h3>
         </div>
     );
 };

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Cart from '../Cart/Cart';
 import Product from '../product/Product';
+import { addToDb } from '../../utilities/fakedb';
 import './Products.css';
 
 const Products = () => {
@@ -16,6 +17,7 @@ const Products = () => {
     const handleClick = (product) => {
         const newCart = [...cart, product]
         setCart(newCart)
+        addToDb(product.key)
     }
 
 
