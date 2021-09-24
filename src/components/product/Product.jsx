@@ -10,7 +10,7 @@ const Product = (props) => {
                 <img src={img} className="card-img-top p-3" alt="..." />
                 <div className="card-body">
                     <p className="card-text fs-4">Price: ${price}</p>
-                    <h4 className="card-title">{name}</h4>
+                    <h5 className="card-title">{name}</h5>
                 </div>
                 <div className="card-footer text-center">
                     <p>Product on stock: { stock }</p>

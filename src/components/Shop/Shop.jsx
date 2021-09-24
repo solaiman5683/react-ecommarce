@@ -8,11 +8,15 @@ import './Shop.css';
 const Shop = () => {
     const [products, setProduct] = useState([])
     const [cart, setCart] = useState([])
+    const [searchProduct, setSearchProduct] = useState([])
 
     useEffect(() => {
         fetch('https://raw.githubusercontent.com/ProgrammingHero1/ema-john-simple-resources/master/fakeData/products.JSON')
             .then(res => res.json())
-            .then(data => setProduct(data));
+            .then(data => {
+                setSearchProduct(data);
+                setProduct(data);
+            });
     }, [])
 
     useEffect(() => {
@@ -29,18 +33,24 @@ const Shop = () => {
             setCart(newCart);
         }
     }, [products])
+
     const handleClick = (product) => {
         const newCart = [...cart, product]
         setCart(newCart)
         addToDb(product.key)
     }
 
+    const handleSearch = (event) => {
+        const searchProducts = products.filter(product => product.name.toLowerCase().includes(event.target.value));
+        setSearchProduct(searchProducts);
+    }
+
     return (
         <>
-            <Header></Header>
+            <Header search={handleSearch}></Header>
             <div className="container d-flex position-relative">
-                <div className="row row-cols-1 row-cols-md-2 g-4 w-75 me-2">
-                    {products.map(product => <Product
+                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 w-75 me-2">
+                    {searchProduct.map(product => <Product
                         key={product.key}
                         products={product}
                         event={handleClick}

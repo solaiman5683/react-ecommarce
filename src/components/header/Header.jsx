@@ -26,10 +26,10 @@ const Header = (props) => {
                             </li>
                         </ul>
                         <div className="d-flex">
-                            <input className="form-control me-2" type="search" placeholder="Type here to Search" aria-label="Search" />
-                            <button className="btn btn-outline-success" type="submit">Search</button>
+                            <input className="form-control me-2" type="search" placeholder="Type here to Search" aria-label="Search" onChange={props.search} />
+                            {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
                             <button className="btn btn-dark mx-2 d-flex fs-5 align-items-center position-relative" id="card-button">
-                                <FontAwesomeIcon icon={faCartPlus} /> <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{props.count}</span>
+                                <FontAwesomeIcon icon={faCartPlus} /> <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
                             </button>
                         </div>
                     </div>
