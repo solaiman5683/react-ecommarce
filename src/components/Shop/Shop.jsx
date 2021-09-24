@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import Cart from '../Cart/Cart';
 import Product from '../product/Product';
+import Header from '../header/Header'
 import { addToDb, getStoredCart } from '../../utilities/fakedb';
-import './Products.css';
+import './Shop.css';
 
-const Products = () => {
+const Shop = () => {
     const [products, setProduct] = useState([])
     const [cart, setCart] = useState([])
 
@@ -28,7 +29,6 @@ const Products = () => {
             setCart(newCart);
         }
     }, [products])
-
     const handleClick = (product) => {
         const newCart = [...cart, product]
         setCart(newCart)
@@ -36,19 +36,22 @@ const Products = () => {
     }
 
     return (
-        <div className="container d-flex position-relative">
-            <div className="row row-cols-1 row-cols-md-2 g-4 w-75 me-2">
-                {products.map(product => <Product
-                    key={product.key}
-                    products={product}
-                    event={handleClick}
-                ></Product>)}
+        <>
+            <Header></Header>
+            <div className="container d-flex position-relative">
+                <div className="row row-cols-1 row-cols-md-2 g-4 w-75 me-2">
+                    {products.map(product => <Product
+                        key={product.key}
+                        products={product}
+                        event={handleClick}
+                    ></Product>)}
+                </div>
+                <div className="w-25">
+                    <Cart cart={cart}></Cart>
+                </div>
             </div>
-            <div className="w-25">
-                <Cart cart={cart}></Cart>
-            </div>
-        </div>
+        </>
     );
 };
 
-export default Products;
+export default Shop;

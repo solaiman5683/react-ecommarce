@@ -5,7 +5,7 @@ import logo from '../../logo.png';
 // import Cart from '../Cart/Cart';
 import './Header.css';
 
-const Header = () => {
+const Header = (props) => {
     return (
         <div className='mb-5'>
             <nav className="navbar navbar-expand-lg navbar-light bg-light shadow py-3">
@@ -29,7 +29,7 @@ const Header = () => {
                             <input className="form-control me-2" type="search" placeholder="Type here to Search" aria-label="Search" />
                             <button className="btn btn-outline-success" type="submit">Search</button>
                             <button className="btn btn-dark mx-2 d-flex fs-5 align-items-center position-relative" id="card-button">
-                                <FontAwesomeIcon icon={faCartPlus} /> <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+                                <FontAwesomeIcon icon={faCartPlus} /> <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{props.count}</span>
                             </button>
                         </div>
                     </div>
