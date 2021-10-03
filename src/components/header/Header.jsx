@@ -11,7 +11,7 @@ const Header = () => {
     const [products] = useProducts();
     const [cart] = useCart(products);
     let count = 0;
-    cart.forEach(c => count+=c.quantity)
+    cart.forEach(c => count += c.quantity);
     return (
         <div className='mb-5'>
             <nav className="navbar navbar-expand-lg navbar-light bg-light shadow py-3">

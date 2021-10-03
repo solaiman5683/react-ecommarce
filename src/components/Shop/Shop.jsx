@@ -54,8 +54,8 @@ const Shop = () => {
                     </div>
                     <div className="w-25">
                         <Cart cart={cart}>
-                            <hr />
-                            <Link to="/review" className="btn btn-warning d-block">Order Review</Link>
+                            <hr /> 
+                            {cart.length ? <Link to="/review" className="btn btn-warning d-block">Order Review</Link>:''}
                         </Cart>
                     </div>
                 </div>

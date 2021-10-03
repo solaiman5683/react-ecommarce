@@ -3,10 +3,11 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 import Header from './components/header/Header';
 import OrderReview from './components/OrderReview/OrderReview';
+import PlaceOrder from './components/PlaceOrder/PlaceOrder';
 import Shop from './components/Shop/Shop';
 
 function App() {
-  
+
   return (
     <div>
       <Router>
@@ -20,6 +21,9 @@ function App() {
           </Route>
           <Route path="/review">
             <OrderReview></OrderReview>
+          </Route>
+          <Route path="/place-order">
+            <PlaceOrder></PlaceOrder>
           </Route>
         </Switch>
       </Router>
