@@ -25,7 +25,8 @@ const Cart = (props) => {
             <hr/>
             <p>Estimated Tax: ${tax}</p>
             <hr/>
-            <h3 className="text-warning">Total Price: ${(totatBeforeTax+tax).toFixed(2)}</h3>
+            <h3 className="text-warning">Total Price: ${(totatBeforeTax + tax).toFixed(2)}</h3>
+            {props.children}
         </div>
     );
 };
