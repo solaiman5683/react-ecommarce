@@ -1,11 +1,17 @@
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
+import useCart from '../../hooks/useCart';
+import useProducts from '../../hooks/useProducts';
 import logo from '../../logo.png';
 // import Cart from '../Cart/Cart';
 import './Header.css';
 
 const Header = () => {
+    const [products] = useProducts();
+    const [cart] = useCart(products);
+    let count = 0;
+    cart.forEach(c => count+=c.quantity)
     return (
         <div className='mb-5'>
             <nav className="navbar navbar-expand-lg navbar-light bg-light shadow py-3">
@@ -29,7 +35,7 @@ const Header = () => {
 
                             {/* <button className="btn btn-outline-success" type="submit">Search</button> */}
                             <button className="btn btn-dark mx-2 d-flex fs-5 align-items-center position-relative" id="card-button">
-                                <FontAwesomeIcon icon={faCartPlus} /> <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{0}</span>
+                                <FontAwesomeIcon icon={faCartPlus} /> <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">{count}</span>
                             </button>
                         </div>
                     </div>
